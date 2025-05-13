@@ -49,4 +49,16 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0]").value("Shawl"))
                 .andExpect(jsonPath("$[1]").value("Ball Gown"));
     }
+
+    @Test
+    public void testInvalidPriceRange() throws Exception {
+        mockMvc.perform(get("/price/5000/1000"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testNegativePriceRange() throws Exception {
+        mockMvc.perform(get("/price/-100/500"))
+                .andExpect(status().isBadRequest());
+    }
 }

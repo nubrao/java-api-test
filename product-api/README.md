@@ -163,6 +163,29 @@ Run the test suite using:
 mvn test
 ```
 
+To generate and view the test coverage report:
+```bash
+# Generate the coverage report
+mvn clean verify
+
+# Open the coverage report in your default browser (Windows)
+start target/site/jacoco/index.html
+```
+
+The coverage report includes:
+- Line coverage
+- Branch coverage
+- Method coverage
+- Class coverage
+
+Test cases cover:
+- Price range filtering
+- Price sorting
+- Error scenarios
+  - Invalid price ranges
+  - Negative values
+  - Ranges without results
+
 ### Building for Production
 
 Create a production-ready JAR file:

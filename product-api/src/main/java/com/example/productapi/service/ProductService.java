@@ -16,23 +16,22 @@ public class ProductService {
     }
 
     public List<Product> findByPriceRange(int initialRange, int finalRange) {
-        // Validação de valores negativos
+        // Negative values validation
         if (initialRange < 0 || finalRange < 0) {
             throw new InvalidPriceRangeException("Price range cannot contain negative values");
         }
 
-        // Validação de range invertido
+        // Inverted range validation
         if (initialRange > finalRange) {
             throw new InvalidPriceRangeException("Initial price cannot be greater than final price");
         }
 
         List<Product> products = productRepository.findByPriceRange(initialRange, finalRange);
-        
-        // Validação de resultado vazio
+
+        // Empty result validation
         if (products.isEmpty()) {
             throw new InvalidPriceRangeException(
-                String.format("No products found in the price range %d to %d", initialRange, finalRange)
-            );
+                    String.format("No products found in the price range %d to %d", initialRange, finalRange));
         }
 
         return products;

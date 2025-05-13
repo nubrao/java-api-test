@@ -8,7 +8,7 @@ public class Product {
     private Integer discount;
     private Integer available;
 
-    // Construtores
+    // Constructors
     public Product() {
     }
 
